@@ -7,7 +7,47 @@
 //
 
 #import "Grid.h"
+#import "Creature.h"
 
-@implementation Grid
+// these are variables that cannot be changed
+static const int GRID_ROWS = 8;
+static const int GRID_COLUMNS = 10;
 
+@implementation Grid {
+    NSMutableArray *_gridArray;
+    float _cellWidth;
+    float _cellHeight;
+
+}
+
+-(void)onEnter
+{
+    [super onEnter];
+    
+    [self setupGrid];
+    
+    //accept touches on the grid
+    self.userInteractionEnabled = YES;
+    
+}
+
+-(void)setupGrid
+{
+    //divide the grid's size by the number of columns/rows to figure out the width and height of each cell
+    _cellwidth = self.contentSize.width / GRID_COLUMNS;
+    _cellHeight = self.contentSize.height / GRID_ROWS;
+    
+    float x = 0;
+    float y = 0;
+    
+    //initialize the array as a blank NSMutableArray
+    _gridArray = [NSMutableArray array];
+    
+    //initialize Creatures
+    for (int i = 0 ; i < GRID_ROWS; i++) {
+    // this is how you creat two dimensional arrays in Objective-C. You put arrays into arrays.
+        _gridArray[i] = [NSMutableArray array];
+    }
+
+}
 @end
