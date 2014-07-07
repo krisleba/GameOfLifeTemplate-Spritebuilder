@@ -80,11 +80,10 @@ static const int GRID_COLUMNS = 10;
 {
 
     //get the row and colum that was touched, return the Creature inside the corresponding cell
-    Creature *creature = nil;
+   int row = touchPosition.y /_cellHeight;
+   int column = touchPosition.x/_cellWidth;
     
-    int column = touchPosition.x / _cellWidth;
-    int row = touchPosition.y / _cellHeight;
-    creature = _gridArray[row][column];
-    
-    return creature;}
+    return _gridArray [row][column];
+
+}
 @end
