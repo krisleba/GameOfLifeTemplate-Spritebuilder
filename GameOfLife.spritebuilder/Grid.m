@@ -63,6 +63,7 @@ static const int GRID_COLUMNS = 10;
         y += _cellHeight;
     }
 }
+
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     // get the x, y coordinates of the touch
@@ -107,8 +108,24 @@ static const int GRID_COLUMNS = 10;
     //update the generation so the label's text will display the correct generation
     _generation++;}
 
-
-
+- (void)updateCreatures {
+    _totalAlive = 0;
+    
+    for (int i = 0; i < [_gridArray count]; i++) {
+        for (int j = 0; j < [_gridArray[i] count]; j++) {
+            Creature *currentCreature = _gridArray[i][j];
+            if (currentCreature.livingNeighbors == 3) {
+                currentCreature.isAlive = YES;
+            } else if ( (currentCreature.livingNeighbors <= 1) || (currentCreature.livingNeighbors >= 4)) {
+                currentCreature.isAlive = NO;
+            }
+            
+            if (currentCreature.isAlive) {
+                _totalAlive++;
+            }
+        }
+    }
+}
 
 - (void)countNeighbors {
     // iterate through the rows
