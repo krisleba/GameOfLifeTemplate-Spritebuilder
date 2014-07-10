@@ -13,7 +13,7 @@
 @property (nonatomic, assign) BOOL isAlive;
 
 // stores the amount of living neighbors
-@property (nonatomic, assign) NSInteger livingNeighbor;
+@property (nonatomic, assign) NSInteger livingNeighbors;
 
 -(id)initCreature;
 
