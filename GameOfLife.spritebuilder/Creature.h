@@ -9,6 +9,7 @@
 #import "CCSprite.h"
 
 @interface Creature : CCSprite
+
 // stores the current state of the creature
 @property (nonatomic, assign) BOOL isAlive;
 
